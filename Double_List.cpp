@@ -110,5 +110,4 @@ Double_List<T>::~Double_List()
     delete this->prev;
     delete this->next;
     this->size = 0;
-    asfdlasndfjlnanfl
 }
