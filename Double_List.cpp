@@ -107,4 +107,7 @@ template <typename T>
 Double_List<T>::~Double_List()
 {
     // write your code here
+    delete this->prev;
+    delete this->next;
+    this->size = 0;
 }
