@@ -6,7 +6,7 @@
 #define DOUBLE_LINK_H
 #include "Double_Node.h"
 
-template <typename T>
+template <typename Type>
 class Double_List
 {
 private:
@@ -18,18 +18,18 @@ public:
     Double_List(Double_List *dl); // construct a list
     int size();                   // returns the number of nodes in the list
     bool empty();                 // check if the list is empty
-    T front();
-    T back();
+    Type front();
+    Type back();
     Double_List head();
     Double_List tail();
-    int count(T obj);
+    int count(Type obj);
     void swap(Double_List *list);
-    Double_List swap(Double_List *rhs);
-    void push_front(T obj);
-    void push_back(T obj);
-    T pop_front();
-    T pop_back();
-    int erase(T obj);
+    Double_List &operator=(Double_List *rhs);
+    void push_front(Type obj);
+    void push_back(Type obj);
+    Type pop_front();
+    Type pop_back();
+    int erase(Type obj);
     ~Double_List();
 };
 
