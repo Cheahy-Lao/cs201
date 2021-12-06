@@ -1,7 +1,9 @@
 //	Team Name   : Debonair
 //	Section		: 1&2
-
+#ifndef DOUBLE_LINK_IMPLEMENTATION_H
+#define DOUBLE_LINK_IMPLEMENTATION_H
 #include <iostream>
+#include "Double_Node.h"
 #include "Double_List.h"
 
 // Constructor, sets all member variables to 0 or NULL. O(1).
@@ -18,7 +20,7 @@ template <typename Type>
 Double_List<Type>::Double_List(Double_List<Type> *dl)
 {
     // write your code here
-    Double_Node<Type> *temp_head = this->list_head;
+    Double_Node<Type> *temp = this->list_head;
     Double_Node<Type> *temp_tail = this->list_tail;
     while (temp != NULL)
     {
@@ -26,7 +28,7 @@ Double_List<Type>::Double_List(Double_List<Type> *dl)
         temp = temp->next;
     }
     dl->list_head = temp->list_head;
-    dl->list_tail = temp->list_tail;
+    dl->list_tail = temp_tail;
     dl->list_size = this->list_size;
 }
 
@@ -152,8 +154,10 @@ Double_List<Type>::~Double_List()
     // write your code here
     while (this->list_head != NULL)
     {
-        delete list_head->data;
         list_head = list_head->next;
+        delete list_head->prev;
     }
     this->list_size = 0;
 }
+
+#endif // DOUBLE_LINK_IMPLEMENTATION_H
