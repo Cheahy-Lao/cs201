@@ -10,21 +10,21 @@ template <typename Type>
 class Double_List
 {
 private:
-    Double_List *list_head; // store the address of the head pointers
-    Double_List *list_tail; // store the address of the tail pointers
-    int list_size;          // number of nodes in the list
+    Double_Node<Type> *list_head; // store the address of the head pointers
+    Double_Node<Type> *list_tail; // store the address of the tail pointers
+    int list_size;                // number of nodes in the list
 public:
-    Double_List();                // construct a list
-    Double_List(Double_List *dl); // construct a list
-    int size();                   // returns the number of nodes in the list
-    bool empty();                 // check if the list is empty
+    Double_List();                      // construct a list
+    Double_List(Double_List<Type> *dl); // construct a list
+    int size();                         // returns the number of nodes in the list
+    bool empty();                       // check if the list is empty
     Type front();
     Type back();
-    Double_List head();
-    Double_List tail();
+    Double_Node<Type> head();
+    Double_Node<Type> tail();
     int count(Type obj);
-    void swap(Double_List *list);
-    Double_List &operator=(Double_List *rhs);
+    void swap(Double_List<Type> *list);
+    Double_List<Type> &operator=(Double_List<Type> *rhs);
     void push_front(Type obj);
     void push_back(Type obj);
     Type pop_front();

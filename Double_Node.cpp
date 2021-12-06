@@ -4,8 +4,8 @@
 #include "Double_Node.h"
 
 // Double_Node constructor
-template <typename T>
-Double_Node<T>::Double_Node(T data)
+template <typename Type>
+Double_Node<Type>::Double_Node(Type data)
 {
     this->prev = NULL;
     this->next = NULL;

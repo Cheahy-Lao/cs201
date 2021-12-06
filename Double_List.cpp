@@ -15,7 +15,7 @@ Double_List<Type>::Double_List()
 
 // Copy Constructor,  create a new doubly linked list with a copy of all of the nodes within the linked list with the elements stored in the same order. Once a copy is made, any change to the original linked list must not affect the copy. (O(n))
 template <typename Type>
-Double_List<Type>::Double_List(Double_List *dl)
+Double_List<Type>::Double_List(Double_List<Type> *dl)
 {
     // write your code here
 }
@@ -32,14 +32,15 @@ template <typename Type>
 bool Double_List<Type>::empty()
 {
     // write your code here
-    return this->size() == 0;
+    return this->list_size == 0;
 }
 
 // Retrieves the object stored in the node pointed to by the head pointer. This function throws an underflow if the list is empty. (O(1))
-template <typename Type> // check if the list is empty
+template <typename Type>
 Type Double_List<Type>::front()
 {
     // write your code here
+    return this->list_head->data;
 }
 
 // Retrieves the object stored in the node pointed to by the tail pointer. This function throws an underflow if the list is empty. (O(1))
@@ -47,20 +48,23 @@ template <typename Type>
 Type Double_List<Type>::back()
 {
     // write your code here
+    return this->list_tail->data;
 }
 
 // Returns the head pointer. (O(1))
 template <typename Type>
-Double_List<Type>::Double_List head()
+Double_Node<Type> Double_List<Type>::head()
 {
     // write your code here
+    return this->list_head;
 }
 
 // Returns the tail pointer. (O(1))
 template <typename Type>
-Double_List<Type>::Double_List tail()
+Double_Node<Type> Double_List<Type>::tail()
 {
     // write your code here
+    return this->list_tail;
 }
 
 // Returns the number of nodes in the linked list storing a value equal to the argument, obj. (O(n))
@@ -72,13 +76,13 @@ int Double_List<Type>::count(Type obj)
 
 // The swap function swaps all the member variables of this linked list with those of the argument. (O(1))
 template <typename Type>
-void Double_List<Type>::swap(Double_List *list)
+void Double_List<Type>::swap(Double_List<Type> *list)
 {
 }
 
 // The assignment operator makes a copy of the argument and then swaps the member variables of this doubly linked list with those of the copy. (O(nlhs + nrhs))
 template <typename Type>
-Double_List<Type> &Double_List<Type>::operator=(Double_List *rhs)
+Double_List<Type> &Double_List<Type>::operator=(Double_List<Type> *rhs)
 {
 }
 
@@ -101,6 +105,8 @@ template <typename Type>
 Type Double_List<Type>::pop_front()
 {
     // write your code here
+    this->list_head = this->list_head->next;
+    delete this->list_head->prev;
 }
 
 // Similar to pop_front, delete the last node in the list. This function throws “underflow” if the list is empty. (O(1))
@@ -108,6 +114,8 @@ template <typename Type>
 Type Double_List<Type>::pop_back()
 {
     // write your code here
+    this->list_tail = this->list_tail->prev;
+    delete this->list_tail->next;
 }
 
 // Delete the first node (from the front) in the linked list that contains the object equal to the argument (use == to to test for equality with the retrieved element). As necessary, update the head and tail pointers and the previous and next pointers of any other node within the list. Return the number of nodes that were deleted (0 or 1). (O(n))
@@ -124,5 +132,5 @@ Double_List<Type>::~Double_List()
     // write your code here
     delete this->prev;
     delete this->next;
-    this->size = 0;
+    this->list_size = 0;
 }
