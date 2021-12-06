@@ -20,8 +20,8 @@ public:
     bool empty();                       // check if the list is empty
     Type front();
     Type back();
-    Double_Node<Type> head();
-    Double_Node<Type> tail();
+    Double_Node<Type> *head();
+    Double_Node<Type> *tail();
     int count(Type obj);
     void swap(Double_List<Type> *list);
     Double_List<Type> &operator=(Double_List<Type> *rhs);

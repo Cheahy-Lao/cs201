@@ -18,6 +18,16 @@ template <typename Type>
 Double_List<Type>::Double_List(Double_List<Type> *dl)
 {
     // write your code here
+    Double_Node<Type> *temp_head = this->list_head;
+    Double_Node<Type> *temp_tail = this->list_tail;
+    while (temp != NULL)
+    {
+        dl->data = temp->data;
+        temp = temp->next;
+    }
+    dl->list_head = temp->list_head;
+    dl->list_tail = temp->list_tail;
+    dl->list_size = this->list_size;
 }
 
 // Returns the number of items in the list. (O(1))
@@ -53,7 +63,7 @@ Type Double_List<Type>::back()
 
 // Returns the head pointer. (O(1))
 template <typename Type>
-Double_Node<Type> Double_List<Type>::head()
+Double_Node<Type> *Double_List<Type>::head()
 {
     // write your code here
     return this->list_head;
@@ -61,7 +71,7 @@ Double_Node<Type> Double_List<Type>::head()
 
 // Returns the tail pointer. (O(1))
 template <typename Type>
-Double_Node<Type> Double_List<Type>::tail()
+Double_Node<Type> *Double_List<Type>::tail()
 {
     // write your code here
     return this->list_tail;
@@ -91,6 +101,16 @@ template <typename Type>
 void Double_List<Type>::push_front(Type obj)
 {
     // write your code here
+    Double_Node<Type> *temp = this->list_head;
+    if (this->list_tail != NULL)
+    {
+    }
+    else
+    {
+        this->list_tail = temp->next;
+        temp->data = obj;
+        this->list_head = temp;
+    }
 }
 
 // Similar to push_front, this places a new node at the back of the list. (O(1))
@@ -130,7 +150,10 @@ template <typename Type>
 Double_List<Type>::~Double_List()
 {
     // write your code here
-    delete this->prev;
-    delete this->next;
+    while (this->list_head != NULL)
+    {
+        delete list_head->data;
+        list_head = list_head->next;
+    }
     this->list_size = 0;
 }
