@@ -5,14 +5,15 @@
 #include <iostream>
 #include "Double_Node.h"
 #include "Double_List.h"
+using namespace std;
 
 // Constructor, sets all member variables to 0 or NULL. O(1).
 template <typename Type>
 Double_List<Type>::Double_List()
 {
-    this->list_head = NULL; // empty list
-    this->list_tail = NULL; // empty list
-    this->list_size = 0;    // set the list'size to zero
+    list_head = NULL;    // empty list
+    list_tail = NULL;    // empty list
+    this->list_size = 0; // set the list'size to zero
 }
 
 // Copy Constructor,  create a new doubly linked list with a copy of all of the nodes within the linked list with the elements stored in the same order. Once a copy is made, any change to the original linked list must not affect the copy. (O(n))
@@ -52,7 +53,17 @@ template <typename Type>
 Type Double_List<Type>::front()
 {
     // write your code here
-    return this->list_head->data;
+    try
+    {
+        if (this->size() == 0)
+            throw underflow_error("The list is empty");
+    }
+    catch (const char *error)
+    {
+        cout << "Error: " << error << endl;
+        return 0;
+    }
+    return list_head->data;
 }
 
 // Retrieves the object stored in the node pointed to by the tail pointer. This function throws an underflow if the list is empty. (O(1))
@@ -120,6 +131,16 @@ template <typename Type>
 void Double_List<Type>::push_back(Type obj)
 {
     // write your code here
+    Double_Node<Type> *temp = new Double_Node(obj);
+    if (this->size() == 0)
+    {
+        temp->next = list_head;
+        list_head = temp;
+    }
+    // temp->prev = list_tail;
+    // list_tail = temp;
+    // list_tail->next = NULL;
+    list_size++;
 }
 
 // Delete the node at the front of the linked list and, as necessary, update the head and tail pointers and the previous pointer of any other node within the list. Return the object stored in the node being popped. Throw “underflow” exception if the list is empty. (O(1))

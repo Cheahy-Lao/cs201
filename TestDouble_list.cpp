@@ -13,6 +13,13 @@ using namespace std;
 int main()
 {
     Double_List<int> int_list1;
+
+    int_list1.push_back(69);
+
+    cout << int_list1.size() << endl;
+    cout << int_list1.front() << endl;
+
+    // Double_List<int> int_list2(int_list1);
     // Double_List<int> int_list2 = int_list2;
     // cout << int_list1.empty() << endl;
     // cout << int_list1.size() << endl;
