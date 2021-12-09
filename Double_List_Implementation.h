@@ -163,9 +163,19 @@ Type Double_List<Type>::pop_back()
 
 // Delete the first node (from the front) in the linked list that contains the object equal to the argument (use == to to test for equality with the retrieved element). As necessary, update the head and tail pointers and the previous and next pointers of any other node within the list. Return the number of nodes that were deleted (0 or 1). (O(n))
 template <typename Type>
-int Double_List<Type>::erase(Type obj)
+int Double_List<Type>::erase(Type obj,Double_Node** list_head, Double_Node* del )
 {
     // write your code here
+    if (*list_head == NULL || del == NULL){ return; }
+
+    if (*list_head == del){*list_head = del->next;}
+
+    if (del->next != NULL){del->next->prev = del->prev;}
+
+    if (del->prev !=NULL){del->prev->next = del->next;}
+
+    free(del);
+    return;
 }
 
 // The destructor must delete each of the nodes in the linked list. (O(n))
