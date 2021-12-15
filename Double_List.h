@@ -15,7 +15,7 @@ private:
     int list_size;                // number of nodes in the list
 public:
     Double_List();                                              // construct a list
-    Double_List(const Double_List *dl);                         // construct a list from another list (Deep Copy)
+    Double_List(const Double_List &dl);                         // construct a list from another list (Deep Copy)
     int size() const;                                           // returns the number of nodes in the list
     bool empty() const;                                         // check if the list is empty
     Type front() const;                                         // returns the data stored in first node

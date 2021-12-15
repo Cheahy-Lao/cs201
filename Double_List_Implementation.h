@@ -18,7 +18,7 @@ Double_List<Type>::Double_List()
 
 // Copy Constructor,  create a new doubly linked list with a copy of all of the nodes within the linked list with the elements stored in the same order. Once a copy is made, any change to the original linked list must not affect the copy. (O(n))
 template <typename Type>
-Double_List<Type>::Double_List(const Double_List<Type> *dl)
+Double_List<Type>::Double_List(const Double_List<Type> &dl)
 {
     list_head = NULL; // empty list
     list_tail = NULL; // empty list
