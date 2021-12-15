@@ -139,13 +139,13 @@ void Double_List<Type>::push_front(const Type obj)
 
     if (list_head == NULL) // if the head does not point to anything it means that the list is empty
     {
-        list_head = temp; // change the head to the tempory pointer
-        list_tail = temp; // change the tail to the tempory pointer
+        list_head = temp; // change the head to the temporary pointer
+        list_tail = temp; // change the tail to the temporary pointer
     }
     else
     {
         temp->setNext(list_head);            // set the temporarynext to the head pointer
-        list_head = temp;                    // change the head to the tempory pointer
+        list_head = temp;                    // change the head to the temporary pointer
         list_head->getNext()->setPrev(temp); // set the previous pointer of the next node to temp
     }
 
@@ -165,7 +165,7 @@ void Double_List<Type>::push_back(const Type obj)
     else
     {
         temp->setPrev(list_tail);       // set the temporarynext to the head pointer
-        list_tail = temp;               // change the head to the tempory pointer
+        list_tail = temp;               // change the head to the temporary pointer
         temp->getPrev()->setNext(temp); // set the next pointer of the previous node to temp
         list_size++;                    // increase the size
     }
@@ -188,7 +188,7 @@ Type Double_List<Type>::pop_front()
     }
     else
     {
-        Double_Node<Type> *temp = list_head; // create a tempory pointer of the list tail
+        Double_Node<Type> *temp = list_head; // create a temporary pointer of the list tail
         list_head = temp->getNext();         // set the head pointer to the next pointer
         temp->getNext()->setPrev(list_head); // set the prev pointer behind the first node to list head
         delete temp;                         // delete the first node pointer
@@ -214,7 +214,7 @@ Type Double_List<Type>::pop_back()
     }
     else
     {
-        Double_Node<Type> *temp = list_tail; // create a tempory pointer of the list tail
+        Double_Node<Type> *temp = list_tail; // create a temporary pointer of the list tail
         list_tail = temp->getPrev();         // set the tail pointer to the previous pointer
         temp->getPrev()->setNext(NULL);      // set the next pointer behind the last node to nullptr
         delete temp;                         // delete the last node pointer
