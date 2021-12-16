@@ -1,5 +1,5 @@
-#ifndef TO_DO_LIST_IMPLEMENTATION
-#define TO_DO_LIST_IMPLEMENTATION
+#ifndef TO_DO_LIST_IMPLEMENTATION_H
+#define TO_DO_LIST_IMPLEMENTATION_H
 
 #include "To_Do_List.h"
 #include <string>
@@ -119,4 +119,4 @@ string To_Do_List::getDescription()
     return this->description;
 }
 
-#endif // TO_DO_LIST_IMPLEMENTATION
+#endif // TO_DO_LIST_IMPLEMENTATION_H

@@ -1,5 +1,5 @@
-#ifndef TO_DO_LIST
-#define TO_DO_LIST
+#ifndef TO_DO_LIST_H
+#define TO_DO_LIST_H
 
 #include <string>
 using namespace std;
@@ -42,4 +42,4 @@ public:
     string getDescription();
 };
 
-#endif // TO_DO_LIST
+#endif // TO_DO_LIST_H
