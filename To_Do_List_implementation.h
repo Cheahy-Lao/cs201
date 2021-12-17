@@ -6,53 +6,50 @@
 using namespace std;
 
 // [Create] - a new task list (you can create an empty list first and then add a task to the list from a text file).
-template <typename Type>
-void To_Do_List<Type>::create()
+void To_Do_List::create()
 {
 }
+
 // [Add] - a new task to the list (adding at the front/tail, display a sub menu).
-template <typename Type>
-void To_Do_List<Type>::add()
+void To_Do_List::add()
 {
 }
+
 // [Remove] - a task from the list (removing from the front/tail, display a sub menu).
-template <typename Type>
-bool To_Do_List<Type>::remove()
+bool To_Do_List::remove()
 {
 }
+
 // [Find] - a task in the list, if found, displays the task’s information.
-template <typename Type>
-Type To_Do_List<Type>::find(const Type obj)
+void To_Do_List::find()
 {
 }
+
 // [Update] - a task in the list, correcting the task information.
-template <typename Type>
-bool To_Do_List<Type>::update()
+bool To_Do_List::update()
 {
 }
 // [Print] - all tasks in the list.
-template <typename Type>
-void To_Do_List<Type>::print()
+void To_Do_List::print()
 {
 }
+
 // [Delete] - the task list.
-template <typename Type>
-To_Do_List<Type>::~To_Do_List()
+To_Do_List::~To_Do_List()
 {
 }
 // [Sort] - Sorting the task list by task's name. (BONUS)
-template <typename Type>
-void To_Do_List<Type>::sort()
+
+void To_Do_List::sort()
 {
 }
 // [Append] - ListAB = List A + List B
-template <typename Type>
-void To_Do_List<Type>::append()
+
+void To_Do_List::append()
 {
 }
 // [Merge] - 2 sorted task lists.
-template <typename Type>
-void To_Do_List<Type>::merge()
+void To_Do_List::merge()
 {
 }
 

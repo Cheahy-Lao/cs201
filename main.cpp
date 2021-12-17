@@ -13,5 +13,15 @@ using namespace std;
 
 int main(int argc, char **argv)
 {
+     To_Do_List task;
+     task.create();
+     task.add();
+     task.remove();
+     task.find();
+     task.update();
+     task.print();
+     task.sort();
+     task.append();
+     task.merge();
      return 0;
 }
