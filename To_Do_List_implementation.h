@@ -5,118 +5,55 @@
 #include <string>
 using namespace std;
 
-To_Do_List::To_Do_List()
+// [Create] - a new task list (you can create an empty list first and then add a task to the list from a text file).
+template <typename Type>
+void To_Do_List<Type>::create()
 {
-    day = 1;
-    month = 1;
-    minutes = 0;
-    hours = 0;
-    importance = 0;
-    percentage = 0;
-    complete = false;
-    task = "";
-    category = "";
-    description = "";
 }
-
-void To_Do_List::setMonth(unsigned short int month)
+// [Add] - a new task to the list (adding at the front/tail, display a sub menu).
+template <typename Type>
+void To_Do_List<Type>::add()
 {
-    this->month = month;
 }
-
-void To_Do_List::setDay(unsigned short int day)
+// [Remove] - a task from the list (removing from the front/tail, display a sub menu).
+template <typename Type>
+bool To_Do_List<Type>::remove()
 {
-    this->day = day;
 }
-
-void To_Do_List::setMinutes(unsigned short int minute)
+// [Find] - a task in the list, if found, displays the task’s information.
+template <typename Type>
+Type To_Do_List<Type>::find(const Type obj)
 {
-    this->minutes = minutes;
 }
-
-void To_Do_List::setHours(unsigned short int hour)
+// [Update] - a task in the list, correcting the task information.
+template <typename Type>
+bool To_Do_List<Type>::update()
 {
-    this->hours = hours;
 }
-
-void To_Do_List::setComplete(bool complete)
+// [Print] - all tasks in the list.
+template <typename Type>
+void To_Do_List<Type>::print()
 {
-    this->complete = complete;
 }
-
-void To_Do_List::setImportance(unsigned short int importance)
+// [Delete] - the task list.
+template <typename Type>
+To_Do_List<Type>::~To_Do_List()
 {
-    this->importance = importance;
 }
-
-void To_Do_List::setPercentage(unsigned short int percentage)
+// [Sort] - Sorting the task list by task's name. (BONUS)
+template <typename Type>
+void To_Do_List<Type>::sort()
 {
-    this->percentage = percentage;
 }
-
-void To_Do_List::setTask(string task)
+// [Append] - ListAB = List A + List B
+template <typename Type>
+void To_Do_List<Type>::append()
 {
-    this->task = task;
 }
-
-void To_Do_List::setCategory(string category)
+// [Merge] - 2 sorted task lists.
+template <typename Type>
+void To_Do_List<Type>::merge()
 {
-    this->category = category;
-}
-
-void To_Do_List::setDescription(string description)
-{
-    this->description = description;
-}
-
-unsigned short int To_Do_List::getDay()
-{
-    return this->day;
-}
-
-unsigned short int To_Do_List::getMonth()
-{
-    return this->month;
-}
-
-unsigned short int To_Do_List::getMinutes()
-{
-    return this->minutes;
-}
-
-unsigned short int To_Do_List::getHours()
-{
-    return this->hours;
-}
-
-unsigned short int To_Do_List::getImportance()
-{
-    return this->importance;
-}
-
-unsigned short int To_Do_List::getPercentage()
-{
-    return this->percentage;
-}
-
-bool To_Do_List::isComplete()
-{
-    return this->complete;
-}
-
-string To_Do_List::getTask()
-{
-    return this->task;
-}
-
-string To_Do_List::getCategory()
-{
-    return this->category;
-}
-
-string To_Do_List::getDescription()
-{
-    return this->description;
 }
 
 #endif // TO_DO_LIST_IMPLEMENTATION_H
