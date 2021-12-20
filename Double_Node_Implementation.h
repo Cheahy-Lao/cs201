@@ -9,8 +9,8 @@
 template <typename Type>
 Double_Node<Type>::Double_Node(Type data)
 {
-    this->prev = NULL;
-    this->next = NULL;
+    prev = NULL;
+    next = NULL;
     this->data = data;
 }
 
@@ -25,7 +25,7 @@ void Double_Node<Type>::setPrev(Double_Node *prev)
 template <typename Type>
 Double_Node<Type> *Double_Node<Type>::getPrev()
 {
-    return this->prev;
+    return prev;
 }
 
 // To set next node
@@ -39,7 +39,7 @@ void Double_Node<Type>::setNext(Double_Node *next)
 template <typename Type>
 Double_Node<Type> *Double_Node<Type>::getNext()
 {
-    return this->next;
+    return next;
 }
 
 // To set Data
@@ -53,6 +53,6 @@ void Double_Node<Type>::setData(Type T)
 template <typename Type>
 Type Double_Node<Type>::getData()
 {
-    return this->data;
+    return data;
 }
 #endif // DOUBLE_NODE_IMPLEMENTATION_H

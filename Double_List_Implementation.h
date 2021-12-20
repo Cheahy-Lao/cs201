@@ -11,9 +11,9 @@ using namespace std;
 template <typename Type>
 Double_List<Type>::Double_List()
 {
-    list_head = NULL;    // empty list
-    list_tail = NULL;    // empty list
-    this->list_size = 0; // set the list's size to zero
+    list_head = NULL; // empty list
+    list_tail = NULL; // empty list
+    list_size = 0;    // set the list's size to zero
 }
 
 // Copy Constructor,  create a new doubly linked list with a copy of all of the nodes within the linked list with the elements stored in the same order. Once a copy is made, any change to the original linked list must not affect the copy. (O(n))
@@ -24,31 +24,34 @@ Double_List<Type>::Double_List(const Double_List<Type> &dl)
     list_tail = NULL; // empty list
     list_size = 0;    // set the list's size to zero
 
-    Double_Node<Type> *head = dl.head(); // create a temporary head
-
-    while (head->getNext() != NULL) // traverse the list until it hit the last node
+    if (dl.size() != 0)
     {
-        Double_Node<Type> *current = new Double_Node<Type>(head->getData()); // assign a new pointer to the current data
-        push_back(current->getData());                                       // push the data to the back of the list
-        head = head->getNext();                                              // change the head pointer to the next one
-    }
+        Double_Node<Type> *head = dl.head(); // create a temporary head
 
-    Double_Node<Type> *current = new Double_Node<Type>(head->getData());
-    push_back(current->getData());
+        while (head->getNext() != NULL) // traverse the list until it hit the last node
+        {
+            Double_Node<Type> *current = new Double_Node<Type>(head->getData()); // assign a new pointer to the current data
+            push_back(current->getData());                                       // push the data to the back of the list
+            head = head->getNext();                                              // change the head pointer to the next one
+        }
+
+        Double_Node<Type> *current = new Double_Node<Type>(head->getData());
+        push_back(current->getData());
+    }
 }
 
 // Returns the number of items in the list. (O(1))
 template <typename Type>
 int Double_List<Type>::size() const
 {
-    return this->list_size; // returns the list size
+    return list_size; // returns the list size
 }
 
 // Returns true if the list is empty, false otherwise. (O(1))
 template <typename Type>
 bool Double_List<Type>::empty() const
 {
-    return this->list_size == 0; // returns a boolean value if the list is empty or not
+    return list_size == 0; // returns a boolean value if the list is empty or not
 }
 
 // Retrieves the object stored in the node pointed to by the head pointer. This function throws an underflow if the list is empty. (O(1))
@@ -75,22 +78,22 @@ Type Double_List<Type>::back() const
 template <typename Type>
 Double_Node<Type> *Double_List<Type>::head() const
 {
-    return this->list_head; // returns the head pointer
+    return list_head; // returns the head pointer
 }
 
 // Returns the tail pointer. (O(1))
 template <typename Type>
 Double_Node<Type> *Double_List<Type>::tail() const
 {
-    return this->list_tail; // returns the tail pointer
+    return list_tail; // returns the tail pointer
 }
 
 // Returns the number of nodes in the linked list storing a value equal to the argument, obj. (O(n))
 template <typename Type>
 int Double_List<Type>::count(const Type obj)
 {
-    Double_Node<Type> *head = this->list_head; // create a temporary head node
-    int count = 0;                             // create a count variables and initialize it to 0
+    Double_Node<Type> *head = list_head; // create a temporary head node
+    int count = 0;                       // create a count variables and initialize it to 0
 
     while (head != NULL) // traverse the whole list
     {
@@ -107,14 +110,14 @@ template <typename Type>
 void Double_List<Type>::swap(Double_List<Type> &list)
 {
     // first store the original values into a different variable
-    Double_Node<Type> *head = this->list_head;
-    Double_Node<Type> *tail = this->list_tail;
-    int size = this->list_size;
+    Double_Node<Type> *head = list_head;
+    Double_Node<Type> *tail = list_tail;
+    int size = list_size;
 
     // switch the values of the original double list with the values of the argument double list
-    this->list_head = list.head();
-    this->list_tail = list.tail();
-    this->list_size = list.size();
+    list_head = list.head();
+    list_tail = list.tail();
+    list_size = list.size();
 
     // replace the argument double list with the stored values
     list.list_head = head;
@@ -127,8 +130,8 @@ template <typename Type>
 Double_List<Type> &Double_List<Type>::operator=(const Double_List<Type> *rhs)
 {
     Double_List<Type> *copy = new Double_List<Type>(rhs); // this makes a copy of the argument "rhs"
-    this->list_head = copy;                               // this will only change the original dl but the argument doesn't change
-    this->list_tail = copy->tail();
+    list_head = copy;                                     // this will only change the original dl but the argument doesn't change
+    list_tail = copy->tail();
 }
 
 // Creates a new Double_node<Type> storing the argument, the next pointer of which is set to the current head pointer and the previous pointer is set to nullptr. The head pointer and the previous pointer of what was the first node is set to the new node. If the list was originally empty, the tail pointer is set to point to the new node. (O(1))
@@ -158,7 +161,7 @@ void Double_List<Type>::push_back(const Type obj)
 {
     Double_Node<Type> *temp = new Double_Node<Type>(obj); // create temporary node with the new object
 
-    if (this->list_size == 0)
+    if (list_size == 0)
     {
         push_front(obj); // this one does not need to increase the size because push_front function already did it for us
     }
@@ -277,7 +280,7 @@ Double_List<Type>::~Double_List()
 
     list_head = NULL;
     list_tail = NULL;
-    this->list_size = 0;
+    list_size = 0;
 }
 
 // A function that prints every node in the list
@@ -287,7 +290,7 @@ void Double_List<Type>::printList()
     if (list_size == 0)
         throw underflow_error("The list is empty and cannot be printed!");
 
-    Double_Node<Type> *temp = this->list_head;
+    Double_Node<Type> *temp = list_head;
 
     cout << "[";
 

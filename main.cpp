@@ -8,20 +8,24 @@
 #include <iostream>
 #include "Double_Node_Implementation.h"
 #include "Double_List_Implementation.h"
-#include "To_Do_List_implementation.h"
+#include "To_Do_List_Implementation.hpp"
 using namespace std;
 
 int main(int argc, char **argv)
 {
      To_Do_List task;
-     task.create();
-     task.add();
-     task.remove();
-     task.find();
-     task.update();
-     task.print();
-     task.sort();
-     task.append();
-     task.merge();
+     Double_List<To_Do_List> test;
+     task.create(test, "test.txt");
+     task.print(test);
+     task.sort(test);
+     task.find(test, "System Analysis Midterm");
+     // task.create();
+     // task.add();
+     // task.remove();
+     // task.find();
+     // task.update();
+     // task.print();
+     // task.sort();
+     // task.append();
      return 0;
 }

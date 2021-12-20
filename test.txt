@@ -1,0 +1,4 @@
+System Analysis Midterm|exam|21/12/2021|kowalski, analysis|
+Data Structures and Algorithm|exam|27/12/2021|test|
+Linear Algebra|exam|23/12/2021|math.....|
+Object Oriented Programming|exam|22/12/2021|inheritance goes brrrrrr|
