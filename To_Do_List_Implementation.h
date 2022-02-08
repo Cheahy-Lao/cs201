@@ -102,7 +102,7 @@ void To_Do_List::create(Double_List<To_Do_List> &task, string filename)
             getline(file, tempDay, '/');
             getline(file, tempMonth, '/');
             getline(file, tempYear, '|');
-            getline(file, tempDescription, '|');
+            getline(file, tempDescription);
             To_Do_List *temp = new To_Do_List(tempTask, tempCategory, stoi(tempDay), stoi(tempMonth), stoi(tempYear), tempDescription);
             task.push_back(*temp);
         }
@@ -218,11 +218,15 @@ void To_Do_List::find(Double_List<To_Do_List> &task, string key)
         }
         head = head->getNext();
     }
+    cout << endl
+         << "Task not found.";
 }
 
 // [Update] - a task in the list, correcting the task information.
-void To_Do_List::update(Double_List<To_Do_List> &task)
+void To_Do_List::update(Double_List<To_Do_List> &hello)
 {
+
+    this->print(hello);
     string tempTask;
     string tempCategory;
     int tempDay;
@@ -230,20 +234,20 @@ void To_Do_List::update(Double_List<To_Do_List> &task)
     int tempYear;
     string tempDescription;
     string taskName;
-    cout << "Name of Task to Search:";
+    cout << "Name of Task to Update:";
     getline(cin, taskName);
-    Double_Node<To_Do_List> *head = task.head();
+    Double_Node<To_Do_List> *head = hello.head();
     while (head != NULL)
     {
         if (head->getData().getTask() == taskName)
         {
-            cout << "which data do you want to update?\n";
+            cout << "Which data do you want to update?\n";
             cout << "1. Task\n";
             cout << "2. Category\n";
-            cout << "3. day\n";
-            cout << "4. month\n";
-            cout << "5. year\n";
-            cout << "6. description\n";
+            cout << "3. Day\n";
+            cout << "4. Month\n";
+            cout << "5. Year\n";
+            cout << "6. Description\n";
             bool validate = true;
             while (validate)
             {
@@ -253,43 +257,43 @@ void To_Do_List::update(Double_List<To_Do_List> &task)
                 switch (option)
                 {
                 case 1:
-                    cout << "Task: ";
+                    cout << "Updated Task Name: ";
                     getline(cin, tempTask);
                     head->getData().setTask(tempTask);
                     validate = false;
                     break;
                 case 2:
-                    cout << "Category: ";
+                    cout << "Updated Category Name: ";
                     getline(cin, tempCategory);
                     head->getData().setCategory(tempCategory);
                     validate = false;
                     break;
                 case 3:
-                    cout << "Day: ";
+                    cout << "Updated Day: ";
                     cin >> tempDay;
                     head->getData().setDay(tempDay);
                     validate = false;
                     break;
                 case 4:
-                    cout << "Month: ";
+                    cout << "Updated Month: ";
                     cin >> tempMonth;
                     head->getData().setMonth(tempMonth);
                     validate = false;
                     break;
                 case 5:
-                    cout << "Year: ";
+                    cout << "Updated Year: ";
                     cin >> tempYear;
                     head->getData().setYear(tempYear);
                     validate = false;
                     break;
                 case 6:
-                    cout << "Description: ";
+                    cout << "Updated Description: ";
                     getline(cin, tempDescription);
                     head->getData().setDescription(tempDescription);
                     validate = false;
                     break;
                 default:
-                    cout << "Error! Please either enter from 1 to 6 as an option." << endl;
+                    cout << "Error! Please enter a number between 1 to 6 as an option." << endl;
                     validate = true;
                     break;
                 }
@@ -303,19 +307,20 @@ void To_Do_List::update(Double_List<To_Do_List> &task)
 void To_Do_List::print(Double_List<To_Do_List> &task)
 {
     Double_Node<To_Do_List> *head = task.head();
+    if (head->getData().getTask().length() > head->getData().getDescription().length())
+    {
+        cout << "#";
+    }
     while (head != NULL)
     {
-        cout << head->getData().getTask() << " ";
-        cout << head->getData().getCategory() << " ";
-        cout << head->getData().getDay() << " ";
-        cout << head->getData().getMonth() << " ";
-        cout << head->getData().getYear() << " ";
-        cout << head->getData().getDescription() << "\n";
+        cout << head->getData().getTask() << endl;
+        cout << head->getData().getCategory() << endl;
+        cout << head->getData().getDay() << "/" << head->getData().getMonth() << "/" << head->getData().getYear() << endl;
+        cout << head->getData().getDescription() << endl;
         head = head->getNext();
     }
 }
-
-// [Delete] - the task list.
+//  [Delete] - the task list.
 To_Do_List::~To_Do_List()
 {
 }
@@ -348,10 +353,33 @@ void To_Do_List::sort(Double_List<To_Do_List> &task)
         }
     }
 }
-// [Append] - ListAB = List A + List B
-void To_Do_List::append()
+// [Append] - ListAB = List A + List B (The first and second parameters are the lists that you want to append and the third is the new appended list)
+void To_Do_List::append(Double_List<To_Do_List> &task, Double_List<To_Do_List> &hello, Double_List<To_Do_List> &append)
 {
+    append = task;
+    Double_Node<To_Do_List> *head = hello.head();
+    while (head != NULL)
+    {
+        string tempTask;
+        string tempCategory;
+        int tempDay;
+        int tempMonth;
+        int tempYear;
+        string tempDescription;
+        tempTask = head->getData().getTask();
+        tempCategory = head->getData().getCategory();
+        tempDay = head->getData().getDay();
+        tempMonth = head->getData().getMonth();
+        tempYear = head->getData().getYear();
+        tempDescription = head->getData().getDescription();
+        To_Do_List *temp = new To_Do_List(tempTask, tempCategory, tempDay, tempMonth, tempYear, tempDescription);
+        append.push_back(*temp);
+        head = head->getNext();
+    }
+    cout << "Append Successful" << endl
+         << endl;
 }
+
 // [Merge] - 2 sorted task lists.
 void To_Do_List::merge()
 {
